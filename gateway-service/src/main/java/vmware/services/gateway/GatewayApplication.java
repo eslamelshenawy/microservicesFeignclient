@@ -22,6 +22,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import vmware.services.gateway.config.RibbonConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import vmware.services.gateway.model.User;
+import vmware.services.gateway.repository.UserRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -44,10 +46,16 @@ public class GatewayApplication {
 
 	@Autowired
 	DiscoveryClient client;
-
+	@Autowired
+	UserRepository userRepository;
 	@PostConstruct
 	public void init() {
 		LOGGER.info("Services: {}", client.getServices());
+		User newUser = new User();
+		newUser.setId(1L);
+		newUser.setUsername("lynas");
+		newUser.setPassword("123456");
+		userRepository.save(newUser);
 
 		// loop through details on every service for logging purposes
 		for (String svc : client.getServices()) {

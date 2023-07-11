@@ -20,11 +20,12 @@ import javax.persistence.GenerationType;
 public class User {
 	@Id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
-	private Long id;
+	private  Long id;
 
 	@Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
-	private String email;
-	private String password;
-	private String fullname;
-	private boolean enabled;
+	public String email;
+	public String password;
+	public String fullname;
+	public String username;
+	public boolean enabled;
 }

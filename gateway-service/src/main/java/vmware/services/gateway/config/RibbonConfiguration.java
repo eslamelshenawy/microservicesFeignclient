@@ -3,7 +3,6 @@ package vmware.services.gateway.config;
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.ServerList;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.ribbon.StaticServerList;
@@ -11,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 public class RibbonConfiguration {
 
-    @Autowired
+
     private DiscoveryClient discoveryClient;
 
     private String serviceId = "client";
